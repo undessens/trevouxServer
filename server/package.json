@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node --inspect=0.0.0.0:9222 -r tsconfig-paths/register -r ts-node/register ./src/server.ts",
     "start:watch": "nodemon",
-    "build": "tsc -p . && cp -r public dist/public",
+    "build": "tsc -p . ",
     "run": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,7 +19,6 @@
     "express": "^4.17.1",
     "ip": "^1.1.5",
     "osc": "^2.4.0",
-    "socket.io": "^2.3.0",
     "tslib": "^1.11.0"
   },
   "nodemonConfig": {

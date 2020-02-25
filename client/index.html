@@ -20,12 +20,12 @@
         </div>
         <transition name="fade">
           <div v-if="viewButton" class="middle" >
-            <transition name="fade">
+            
             <button v-for="i of [0,1,2,3,4,5]" type="button" v-on:click="setActiveBtn(i)" 
             :class="{ active: activeBtn === i , inactive: activeBtn !== i }"
             :style="{background: `url('images/${i}.jpg')  no-repeat scroll 0 0 transparent`}"
             > {{nameButton[i]}} </button>
-          </transition>
+          
 
           </div>
       </transition>

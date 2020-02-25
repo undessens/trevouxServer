@@ -1,0 +1,1 @@
+concurrently -i "cd server && npm run start:watch" "cd client && npm run serve"

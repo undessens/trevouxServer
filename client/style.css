@@ -3,24 +3,6 @@ body {
   user-select: none; /*discard text selection*/
 }
 
-.bouton1{
-  background: url("images/1.jpg") no-repeat scroll 0 0 transparent;
-}
-.bouton2{
-  background: url("images/2.jpg") no-repeat scroll 0 0 transparent;
-}
-.bouton3{
-  background: url("images/3.jpg") no-repeat scroll 0 0 transparent;
-}
-.bouton4{
-  background: url("images/4.jpg") no-repeat scroll 0 0 transparent;
-}
-.bouton5{
-  background: url("images/5.jpg") no-repeat scroll 0 0 transparent;
-}
-.bouton6{
-  background: url("images/6.jpg") no-repeat scroll 0 0 transparent;
-}
 
 .switchText{
   text-align: center;
