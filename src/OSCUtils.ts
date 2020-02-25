@@ -19,34 +19,39 @@ udpPort.open();
 
 // When the port is read, send an OSC message to, say, SuperCollider
 udpPort.on("ready", function () {
-    // udpPort.send({
+  // udpPort.send({
     //     address: "/s_new",
     //     args: [
     //         {
-    //             type: "s",
-    //             value: "default"
-    //         },
-    //         {
-    //             type: "i",
-    //             value: 100
-    //         }
-    //     ]
-    // }, "127.0.0.1", 57110);
-  });
+      //             type: "s",
+      //             value: "default"
+      //         },
+      //         {
+        //             type: "i",
+        //             value: 100
+        //         }
+        //     ]
+        // }, "127.0.0.1", 57110);
+      });
 
+class OSCSenderClass{
+  sendI(address:string,i:number){
+    udpPort.send({address,args:[{type:"i",value:i}]},oscConf.outIp,oscConf.outPort);
+  }
 
-export sendI(address:string,i:number){
-    udpPort.send({address,[{type:"i",value:i}]},oscConf.outIp,oscConf.outPort)
+  sendF(address:string,f:number){
+    udpPort.send({address,args:[{type:"f",value:f}]},oscConf.outIp,oscConf.outPort);
+  }
+  sendS(address:string,s:number){
+    udpPort.send({address,args:[{type:"s",value:s}]},oscConf.outIp,oscConf.outPort)
+  }
+  sendB(address:string,b:number){
+    udpPort.send({address,args:[{type:"b",value:!!b}]},oscConf.outIp,oscConf.outPort)
+  }
+
 }
-export function sendF(address:string,f:number){
-    udpPort.send({address,[{type:"f",value:f}]},oscConf.outIp,oscConf.outPort)
-}
-export sendS(address:string,s:number){
-    udpPort.send({address,[{type:"s",value:s}]},oscConf.outIp,oscConf.outPort)
-}
-export function sendB(address:string,b:number){
-    udpPort.send({address,[{type:"b",value:!!b}]},oscConf.outIp,oscConf.outPort)
-}
+
+export const OSCSender = new OSCSenderClass();
 
 
 
