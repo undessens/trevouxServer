@@ -1,5 +1,6 @@
 body {
   margin: 0; /* pour éviter les marges */
+  user-select: none; /*discard text selection*/
 }
 
 .bouton1{

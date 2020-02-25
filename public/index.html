@@ -20,11 +20,13 @@
         </div>
         <transition name="fade">
           <div v-if="viewButton" class="middle" >
-            <button class="bouton1" type="button" v-on:click="setActiveBtn(1)" :class="{ active: activeBtn === 1 , inactive: activeBtn !== 1 }"> {{nameButton[0]}} </button>
-            <button class="bouton2" type="button" v-on:click="setActiveBtn(2)" :class="{ active: activeBtn === 2 , inactive: activeBtn !== 2 }"> {{nameButton[1]}} </button>
-            <button class="bouton3" type="button" v-on:click="setActiveBtn(3)" :class="{ active: activeBtn === 3 , inactive: activeBtn !== 3 }"> {{nameButton[2]}} </button>
-            <button class="bouton4" type="button" v-on:click="setActiveBtn(4)" :class="{ active: activeBtn === 4 , inactive: activeBtn !== 4 }"> {{nameButton[3]}} </button>
-            <button class="bouton5" type="button" v-on:click="setActiveBtn(5)" :class="{ active: activeBtn === 5 , inactive: activeBtn !== 5 }"> {{nameButton[4]}} </button>
+            <transition name="fade">
+            <button v-for="i of [0,1,2,3,4,5]" type="button" v-on:click="setActiveBtn(i)" 
+            :class="{ active: activeBtn === i , inactive: activeBtn !== i }"
+            :style="{background: `url('images/${i}.jpg')  no-repeat scroll 0 0 transparent`}"
+            > {{nameButton[i]}} </button>
+          </transition>
+
           </div>
       </transition>
     </div>

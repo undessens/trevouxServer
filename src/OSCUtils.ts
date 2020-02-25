@@ -45,9 +45,7 @@ class OSCSenderClass{
   sendS(address:string,s:number){
     udpPort.send({address,args:[{type:"s",value:s}]},oscConf.outIp,oscConf.outPort)
   }
-  sendB(address:string,b:number){
-    udpPort.send({address,args:[{type:"b",value:!!b}]},oscConf.outIp,oscConf.outPort)
-  }
+  
 
 }
 

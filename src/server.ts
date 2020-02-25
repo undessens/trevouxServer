@@ -37,7 +37,7 @@ function parseMessage(d:any){
     OSCSender.sendI("/step",d.step)
   }
   if(argNames.includes("auto")){
-    OSCSender.sendB("/auto",d.auto)
+    OSCSender.sendI("/auto",d.auto?1:0)
   }
 
 }
