@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+       
+        </head>
+<body>
+  
+    <div id="app-5">
+    </div> 
+      
+    <div id="toolBtns">
+        <div class="top">
+          <p class="switchText" > mode actuel : {{ modeToDisplay }} </p>
+          <label class="switch">
+          <input v-on:click="switchMode" type="checkbox" v-model="autoMode">
+          <span class="slider round"></span>
+          </label>
+          <p class="switchText" > Scene actuelle : {{ activeBtn }} </p>
+        </div>
+        <transition name="fade">
+          <div v-if="viewButton" class="middle" >
+            <button class="bouton1" type="button" v-on:click="setActiveBtn(1)" :class="{ active: activeBtn === 1 , inactive: activeBtn !== 1 }"> {{nameButton[0]}} </button>
+            <button class="bouton2" type="button" v-on:click="setActiveBtn(2)" :class="{ active: activeBtn === 2 , inactive: activeBtn !== 2 }"> {{nameButton[1]}} </button>
+            <button class="bouton3" type="button" v-on:click="setActiveBtn(3)" :class="{ active: activeBtn === 3 , inactive: activeBtn !== 3 }"> {{nameButton[2]}} </button>
+            <button class="bouton4" type="button" v-on:click="setActiveBtn(4)" :class="{ active: activeBtn === 4 , inactive: activeBtn !== 4 }"> {{nameButton[3]}} </button>
+            <button class="bouton5" type="button" v-on:click="setActiveBtn(5)" :class="{ active: activeBtn === 5 , inactive: activeBtn !== 5 }"> {{nameButton[4]}} </button>
+          </div>
+      </transition>
+    </div>
+<!-- 
+    <div id="app">
+      {{ message }}
+    </div> -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- <script src="conf.js"></script> -->
+  <script src="app.js"></script>
+
+  
+</body>
+  </html>
