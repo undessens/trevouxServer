@@ -28,21 +28,31 @@ var wss = new WebSocket.Server({
 
 
 const videoPlayerOSC = new OSCSenderClass(
-    conf.osc.outIp,
-    conf.osc.outPort,
+    conf.vid.outIp,
+    conf.vid.outPort,
     conf.osc.localPort,
     {
-        msg:logOSCMsg,
+        msg:processMsgFromVid,
         connected:sendConfToVidPlayer,
     }
     )
 function sendConfToVidPlayer(){
     for(const [k,v] of Object.entries(conf.vid)){
+        if(!(k.startsWith('outPort') || k.startsWith('outIp'))){
         videoPlayerOSC.send1Auto('/'+k,v)
+    }
     }
 }
 
 
+const fakeLocalPort = 111111
+const lightSender = new OSCSenderClass(
+  conf.light.outIp,
+  conf.light.outPort,
+  fakeLocalPort,
+  {}
+
+  )
 
 wss.on("connection", function (socket:any) {
     var socketPort = new osc.WebSocketPort({
@@ -51,18 +61,25 @@ wss.on("connection", function (socket:any) {
     });
 
     socketPort.on("message", function (msg:any) {
-        if(msg.address.startsWith('/server')){
-            processServerMesage(msg)
-        }
-        else{
-            console.log("osc websocket recvd", msg);
-            videoPlayerOSC.sendMsg(msg)
-        }
+        processWSMessage(msg)
+        
     });
 });
 
 
-function processServerMesage(msg:any){
+function processWSMessage(msg:any){
+if(msg.address.startsWith('/auto')){
+    if(msg.args && msg.args[0]){
+            videoPlayerOSC.send0("/player/play")
+        }
+        else{
+            videoPlayerOSC.send0("/player/stop")   
+        }
+        // videoPlayerOSC.sendMsg(msg)
+        }
+}
+
+function processMsgFromVid(msg:any){
 
 }
 

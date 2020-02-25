@@ -47,6 +47,9 @@ export class OSCSenderClass{
   sendMsg(msg:any){
     this.udpPort.send(msg,this.remoteIp,this.remotePort)
   }
+  send0(address:string){
+    this.sendMsg({address,args:[]})
+  }
   send1Auto(address:string,v:any){
    const  type = typeof(v)==="string"?"s":
     (!isNaN(v)?"f":undefined)

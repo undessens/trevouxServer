@@ -1,0 +1,1 @@
+"scp -r server/dist pi@radiologic.local:Documents/trevouxServer/server/dist/ && scp -r client/dist pi@radiologic.local:Documents/trevouxServer/client/dist/ "
