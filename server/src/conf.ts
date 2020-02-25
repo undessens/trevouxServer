@@ -24,7 +24,7 @@ export const  conf  = {
   vid:{
     outPort:12345,
     outIp:"127.0.0.1",
-    averageColor/activate:0
+    "averageColor/activate":0
   },
   light:{
     outPort:11000,
