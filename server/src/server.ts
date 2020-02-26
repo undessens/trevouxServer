@@ -3,10 +3,12 @@ import {OSCSenderClass,logOSCMsg} from './OSCUtils'
 const osc = require('osc')
 import http from 'http'
 import {conf} from './conf'
+var history = require('connect-history-api-fallback');
 const isPi = require('detect-rpi');
 const { exec } = require('child_process');
 
 const app = express()
+app.use(history())
 const server = new http.Server(app);
 const WebSocket = require("ws");
 

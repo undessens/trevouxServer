@@ -16,6 +16,7 @@
   "author": "UnDesSens",
   "license": "ISC",
   "dependencies": {
+    "connect-history-api-fallback": "^1.6.0",
     "csv-parser": "^2.3.2",
     "detect-rpi": "^1.4.0",
     "express": "^4.17.1",
