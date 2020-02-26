@@ -1,11 +1,12 @@
 <template>
   <div class="auto">
 
-    <h1>mode auto</h1>
+    <h1>mode vidéo</h1>
           <Toggle v-model=isPlaying :text='isPlaying?"stop":"lecture"'></Toggle>
 
-          <Button @input="showShutdownDialog(false)" text=shutdown />
-    
+          <div class="bottom">
+          <Button @input="showShutdownDialog(false)" text=" OFF " class="shutdown"/>
+          </div>
   </div>
 </template>
 
@@ -41,3 +42,27 @@ export default class MediaControls extends Vue {
 
 
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.shutdown{
+  position:relative; 
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.bottom{
+  background-color: gray;
+  position:fixed;
+  text-align: right;
+  width: 100%;
+  height: 50px;
+  bottom: 2%;
+}
+
+.auto{
+  padding-bottom: 100%;
+  background-color: rgb(250, 250, 250);
+}
+
+</style>

@@ -41,6 +41,7 @@ export default class Button extends Vue {
 <style scoped>
 .text{
   vertical-align:sub;
+  color: white;
 }
 .switch {
   position: relative;
@@ -65,7 +66,9 @@ export default class Button extends Vue {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: rgb(226, 226, 226);
+  border-color: black;
+  border-width: 2px;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -77,7 +80,7 @@ export default class Button extends Vue {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: rgb(253, 0, 0);
   -webkit-transition: .4s;
   transition: .4s;
 }
