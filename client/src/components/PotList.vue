@@ -45,7 +45,7 @@ export default class PotList extends Vue {
 
   @Prop({default:
     ()=>{
-      return ["animation1", "animation 2", "animation3", "animation4", "animation5","animation5","animation5","animation5","animation5","animation5","animation5"]
+      return ["apothicairerie","medaillon","mortier","bouteille","theriaque A","theriaque B","pot onguent","chervrette","pot cylindrique","pot canon","vase haut","rafraichissoire"]
     }
   }) 
   private nameButton!: string []
