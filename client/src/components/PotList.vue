@@ -77,7 +77,8 @@ export default class PotList extends Vue {
   setActiveBtn (i: number){
     // console.log(i);
     this.activeBtn = i;
-    sendStep(i)
+    
+    sendStep(this.nameButton[this.activeBtn])
   }
 }
 

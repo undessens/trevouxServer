@@ -11,7 +11,7 @@ const app = express()
 app.use(history())
 const server = new http.Server(app);
 const WebSocket = require("ws");
-
+let isAutoMode = true;
 console.log(`serving ${conf.path.public}`)
 
 
@@ -76,16 +76,15 @@ wss.on("connection", function (socket:any) {
 function processWSMessage(msg:any){
     const firstArg = msg.args? (msg.args[0] ?msg.args[0].value : undefined):undefined
     if(msg.address.startsWith('/auto')){
-
-        if(msg.args && !!firstArg){
-
+        isAutoMode = msg.args && !!firstArg
+        if(isAutoMode){
             videoPlayerOSC.send0("/player/play")
-            lightSender.sendSF("/sequencePlayer/goToStateNamed","autoOn",conf.light.fadeTime)
+            lightSender.sendSF("/sequencePlayer/goToStateNamed","autoOn",conf.light.fadeTimeAuto)
         }
         else{
             console.log('stoping')
             videoPlayerOSC.send0("/player/stop")   
-            lightSender.sendSF("/sequencePlayer/goToStateNamed","autoOff",conf.light.fadeTime)
+            lightSender.sendSF("/sequencePlayer/goToStateNamed","autoOff",conf.light.fadeTimeManual)
         }
         // videoPlayerOSC.sendMsg(msg)
     }
@@ -117,6 +116,10 @@ function processWSMessage(msg:any){
         }
 
     }
+    else if(msg.address==="/step"){
+        console.log("sending step",firstArg)
+        lightSender.sendSF("/sequencePlayer/goToStateNamed",firstArg,conf.light.fadeTimeManual)
+    }
 }
 
 function processMsgFromVid(msg:any){
@@ -125,7 +128,7 @@ function processMsgFromVid(msg:any){
     if(msg.address.startsWith('/light/memory')){
 
         const memName = firstArg;
-        lightSender.sendSF("/sequencePlayer/goToStateNamed",memName,conf.light.fadeTime)
+        lightSender.sendSF("/sequencePlayer/goToStateNamed",memName,conf.light.fadeTimeAuto)
     }
 }
 

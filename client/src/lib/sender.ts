@@ -80,7 +80,7 @@ export function sendS(address: string,v: string){
 
 export function sendAuto(m: boolean){sendI("/auto",m?1:0)}
 
-export function sendStep(step: number){sendI("/step",step)}
+export function sendStep(step: string){sendS("/step",step)}
 
 export function sendPlay(m: boolean){sendI("/play",m?1:0)}
 

@@ -24,14 +24,13 @@ export const  conf  = {
   vid:{
     outPort:12345,
     outIp:"127.0.0.1",
-    csvFile:path.resolve(__dirname,"../../tst.csv"),
     "averageColor/activate":0,
-    potList:[]
   },
   light:{
     outPort:11000,
     outIp:"127.0.0.1",
-    fadeTime:5
+    fadeTimeAuto:3,
+    fadeTimeManual:1,
   }
   
 } as any
