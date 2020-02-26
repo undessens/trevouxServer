@@ -1,19 +1,31 @@
 <template>
   <div >
-    <p class="switchText" > Scene actuelle : {{ activeBtn }} </p>
+    <p class="switchText" > Scene actuelle : {{ activeButtonName }} ({{activeBtn}}) </p>
     <div class="potlist">
 
-      <!-- <transition-group name="list-complete" tag="button"> -->
+      <!-- <transition-group name="fade" tag="span" appear mode="out-in"> -->
 
-        <button v-for="i of numPotList" :key="i" 
+        <span v-for="i of numPotList" :key="i" 
+        class='potElement' :class="{ active: activeBtn === i , inactive: activeBtn !== i }">
+
+
+
+        <button 
         type="button" 
         v-on:click="setActiveBtn(i)" 
-        class='potElement'
-        :class="{ active: activeBtn === i , inactive: activeBtn !== i }"
-        :style="{background: `url('images/${i+1}.jpg')  no-repeat scroll 0 0 transparent`}"
+        class="potImage"
+        :class="{enter:startTransition,out:!startTransition}"
+        :style="{backgroundImage: `url('images/${nameButton[i]}.png')`}"
         > 
-        {{nameButton[i]}}
+
       </button>
+
+      <div class="potText" >
+        {{nameButton[i]}}
+
+      </div>
+
+    </span>
 
 
     <!-- </transition-group> -->
@@ -49,7 +61,19 @@ export default class PotList extends Vue {
     }
   }) 
   private nameButton!: string []
-
+  // private nameButton = new Array<string>()
+  get activeTransition(){return this.nameButton.map(e=>e+this.startTransition)}
+  public startTransition = false;
+  activated(){
+    this.startTransition = true;
+    
+  }
+  deactivated(){
+    this.startTransition = false;
+  }
+  get activeButtonName(){
+    return this.nameButton[this.activeBtn]
+  }
   setActiveBtn (i: number){
     // console.log(i);
     this.activeBtn = i;
@@ -65,28 +89,60 @@ export default class PotList extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .potlist{
-  /*display:flex;*/
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  background-blend-mode: normal;
+
   /*min-height:80%;*/
 }
 .potElement{
-  min-height:300px;
-  min-height:200px;
-  margin-left: 2%;
-  margin-right: 2%;
-  margin-bottom: 2%;
-  margin-top: 2%;
-  font-size: 24px;
-  padding: 10px;
+
+ /*justify-self: stretch;*/
+ transition: all .3s;
+ font-size: 24px;
+
+ margin-left: 2%;
+ margin-right: 2%;
+ margin-bottom: 2%;
+ margin-top: 2%;
+ min-width:180px;
+ min-height:231px;
+  /*max-height:463px;
+  max-width:360px;*/
+  display: inline-block;
+  border-radius: 12px;
+  border: 0px solid #4CAF50;
+  background-color: #000000;
+  outline-style: none;
+  /* scroll 0 0 transparent*/
+
+}
+.potImage{
+  outline-style: none;
+  padding: 0px;
+  /*height:80%;*/
+  min-width:inherit;
+  min-height:inherit;
   box-sizing: content-box;
+  background-size: contain;
+  background-repeat:no-repeat;
+  
+  border-radius: 12px 12px 0px 0px;
+
+}
+.potText{
+
+  text-align: center;
+  
+  color: inherit;
 }
 .inactive{
+  filter: grayscale(70%);
   
-  /*width: 320px ;
-  height: 240px;*/
-  
-  color: #ffffff;
-  border-radius: 12px;
-  border: 2px solid #000000;
+  color: white;
+
+  border-color: #000000;
 }
 
 .inactive:hover{
@@ -96,36 +152,27 @@ export default class PotList extends Vue {
 
 
 .active{
-  filter: grayscale(100%);
-  position: relative;
-  /*width: 320px ;
-  height: 240px;*/
+
+
+  color: black;
+  background-color: white;
+  border-color: white;
+  box-shadow: 10px 5px 5px grey;
   
-  
-  color: #969696;
-  
-  border-radius: 12px;
-  border: 4px solid #4CAF50;
 }
 
-
-.active:focus{
-  outline: 0px
-}
-
-
-.list-complete-item {
+.enter{
   transition: all 1s;
-  display: inline-block;
-  margin-right: 10px;
+  opacity:1;
 }
-.list-complete-enter, .list-complete-leave-to
-/* .list-complete-leave-active below version 2.1.8 */ {
-  transition: all 1s;
-  opacity: 0;
-  transform: translateY(30px);
+.out{
+  opacity:0.5;
 }
-.list-complete-leave-active {
-  position: absolute;
-}
+
+
+/*.active:focus{
+  
+  }*/
+
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="manual">
 
-    <PotList msg="Welcome to Your PotList App"/>
+    <PotList />
   </div>
 </template>
 

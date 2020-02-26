@@ -3,7 +3,8 @@ import {OSCSenderClass,logOSCMsg} from './OSCUtils'
 const osc = require('osc')
 import http from 'http'
 import {conf} from './conf'
-
+const isPi = require('detect-rpi');
+const { exec } = require('child_process');
 
 const app = express()
 const server = new http.Server(app);
@@ -73,9 +74,9 @@ wss.on("connection", function (socket:any) {
 function processWSMessage(msg:any){
     const firstArg = msg.args? (msg.args[0] ?msg.args[0].value : undefined):undefined
     if(msg.address.startsWith('/auto')){
-        
+
         if(msg.args && !!firstArg){
-            
+
             videoPlayerOSC.send0("/player/play")
             lightSender.sendSF("/sequencePlayer/goToStateNamed","autoOn",conf.light.fadeTime)
         }
@@ -85,6 +86,34 @@ function processWSMessage(msg:any){
             lightSender.sendSF("/sequencePlayer/goToStateNamed","autoOff",conf.light.fadeTime)
         }
         // videoPlayerOSC.sendMsg(msg)
+    }
+    else if(msg.address.startsWith('/vid')){
+        msg.address = msg.address.substring(4)
+        console.log('transmit to vid',msg)
+        videoPlayerOSC.sendMsg(msg)
+    }
+    else if(msg.address.startsWith('/system/')){
+        const cmd = msg.address.substring(8)
+        
+        const eCommand = `shutdown ${cmd==="reboot"?"-r":""} now`
+        console.log('systemCmd',eCommand)
+        if(isPi()){
+
+            exec(eCommand, function(error:any, stdout:any, stderr:any){ 
+                if(error){
+                    console.error("shutdown error",error)
+                }
+                if(stderr){
+                    console.error("shutdown stderr",stderr)
+                }
+                if(stdout){
+                    console.error("shutdown stdout",stdout)
+                }
+            })
+
+
+        }
+
     }
 }
 

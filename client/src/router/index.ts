@@ -1,31 +1,26 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Manual from '../views/Manual.vue'
-import Auto from '../views/Auto.vue'
+import Main from '../views/Main.vue'
+import Config from '../views/Config.vue'
+// import Manual from '../views/Manual.vue'
+// import Auto from '../views/Auto.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Auto',
-    component: Auto
+    name: 'Main',
+    component: Main
   },
   {
-    path: '/auto',
-    name: 'Auto',
-    component: Auto
-  },
-  {
-    path: '/manual',
-    name: 'Manual',
-    component:Manual
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/config',
+    name: 'Config',
+    component: Config,//() => import(/* webpackChunkName: "about" */ '../views/Config.vue')
   }
+  
 ]
+
 
 const router = new VueRouter({
   mode: 'history',

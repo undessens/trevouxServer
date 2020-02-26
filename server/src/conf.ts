@@ -1,7 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 const jsonConfig=path.resolve(__dirname,'../../config.json') 
-const csv = require('csv-parser');
+
 
 
 var ip = require("ip");
@@ -55,23 +55,23 @@ catch(e){
   console.error(`can't read conf at ${jsonConfig}`,e)
 }
 
+// const csv = require('csv-parser');
+// conf.potList =[]
+// fs.createReadStream(conf.vid.csvFile)
+// .pipe(csv())
+// .on('data', (row:any) => {
+//   conf.potList.push(row[1])
+//   console.log(row);
+// })
+// .on('end', () => {
+//   // console.log('CSV file successfully processed');
+//   conf.potList = Array.from(new Set(conf.potList))
+//   console.log(conf.potList)
 
-conf.potList =[]
-fs.createReadStream(conf.vid.csvFile)
-.pipe(csv())
-.on('data', (row:any) => {
-  conf.potList.push(row[1])
-  console.log(row);
-})
-.on('end', () => {
-  // console.log('CSV file successfully processed');
-  conf.potList = Array.from(new Set(conf.potList))
-  console.log(conf.potList)
-
-})
-.on('error', (e:any) => {
-  console.error('CSV error',e);
-});
+// })
+// .on('error', (e:any) => {
+//   console.error('CSV error',e);
+// });
 
 
 

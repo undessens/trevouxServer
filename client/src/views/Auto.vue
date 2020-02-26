@@ -2,10 +2,7 @@
   <div class="auto">
 
     <h1>mode auto</h1>
-          <label class="switch">
-        <input type="checkbox" v-model="isPlaying">
-        <span class="slider round"></span>
-      </label>
+          <Toggle v-model=isPlaying></Toggle>
     
   </div>
 </template>
@@ -13,23 +10,24 @@
 
 <script lang="ts">
 import { Component, Prop, Vue,Watch } from 'vue-property-decorator';
-import {sendPlay} from '@/lib/sender'
+import {sendPlayStopVid} from '@/lib/sender'
+import Toggle from '@/components/Toggle.vue'
 
-
-@Component
+@Component({components:{Toggle}})
 export default class MediaControls extends Vue {
   
   
-  private _isPlaying=false;
+  private _isPlaying=true;
+
   set isPlaying(p: boolean){
+    console.log('playing',p)
     this._isPlaying=p
-    sendPlay(this._isPlaying)
+    
+    sendPlayStopVid(this._isPlaying)
   }
   get isPlaying(){return this._isPlaying}
 
-  private setVolume(v: number){
-
-  }
+  togglePlay(){this.isPlaying = !this.isPlaying}
 
 }
 

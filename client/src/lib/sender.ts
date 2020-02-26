@@ -84,5 +84,7 @@ export function sendStep(step: number){sendI("/step",step)}
 
 export function sendPlay(m: boolean){sendI("/play",m?1:0)}
 
-export function sendPlayPauseVid(m: boolean){send0("/vid/"+(m?"play":"pause"))}
-export function sendPlayStopVid(m: boolean){send0("/vid/"+(m?"play":"stop"))}
+export function sendPlayPauseVid(m: boolean){send0("/vid/player/"+(m?"play":"pause"))}
+export function sendPlayStopVid(m: boolean){send0("/vid/player/"+(m?"play":"stop"))}
+export function sendToggleShowError(){send0("/vid/error/show")}
+export function sendShutdown(reboot:boolean){send0("/system/"+(reboot?"reboot":"shutdown"));}
