@@ -1,0 +1,3 @@
+systemctl restart trevouxServer
+systemctl restart universalPlayer
+systemctl restart vermuth

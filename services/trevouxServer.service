@@ -3,7 +3,8 @@
  After=multi-user.target
 
  [Service]
- ExecStart=/bin/bash /home/pi/Documents/trevouxServer/run.sh
+ WorkingDirectory=/home/pi/Documents/trevouxServer
+ ExecStart=/bin/bash run.sh
 
  [Install]
  WantedBy=multi-user.target

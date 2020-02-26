@@ -1,9 +1,10 @@
  [Unit]
- Description=trevouxServer
+ Description=vermuth
  After=multi-user.target
 
  [Service]
- ExecStart=/bin/bash /home/pi/Documents/vermuth/run.sh
+ WorkingDirectory=/home/pi/Documents/vermuth
+ ExecStart=/bin/bash run.sh
 
  [Install]
  WantedBy=multi-user.target

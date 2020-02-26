@@ -1,9 +1,9 @@
  [Unit]
- Description=trevouxServer
+ Description=universalPlayer
  After=multi-user.target
 
  [Service]
- ExecStart=./home/pi/Documents/openFrameworks/apps/universalMediaPlayer/of_universalMediaPlayer/bin/of_universalMediaPlayer
+ ExecStart=/home/pi/Documents/openFrameworks/apps/universalMediaPlayer/of_universalMediaPlayer/bin/of_universalMediaPlayer
 
  [Install]
  WantedBy=multi-user.target
