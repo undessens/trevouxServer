@@ -36,8 +36,8 @@ export default class PotList extends Vue {
   @Prop({default:"pot"}) 
   private msg! : string;
 
-  @Prop({default:5}) 
-  private numPot!: number;
+  
+  get numPot(){return this.nameButton.length}
 
   get numPotList(){return [...Array(this.numPot).keys()]}
   
@@ -45,7 +45,7 @@ export default class PotList extends Vue {
 
   @Prop({default:
     ()=>{
-      return ["animation1", "animation 2", "animation3", "animation4", "animation5"]
+      return ["animation1", "animation 2", "animation3", "animation4", "animation5","animation5","animation5","animation5","animation5","animation5","animation5"]
     }
   }) 
   private nameButton!: string []
@@ -65,23 +65,26 @@ export default class PotList extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .potlist{
-  display:flex;
+  /*display:flex;*/
   /*min-height:80%;*/
 }
 .potElement{
   min-height:300px;
   min-height:200px;
-}
-.inactive{
-  position: relative;
-  /*width: 320px ;
-  height: 240px;*/
-  margin-left: 10%;
+  margin-left: 2%;
   margin-right: 2%;
   margin-bottom: 2%;
   margin-top: 2%;
-  color: #ffffff;
   font-size: 24px;
+  padding: 10px;
+  box-sizing: content-box;
+}
+.inactive{
+  
+  /*width: 320px ;
+  height: 240px;*/
+  
+  color: #ffffff;
   border-radius: 12px;
   border: 2px solid #000000;
 }
@@ -97,14 +100,12 @@ export default class PotList extends Vue {
   position: relative;
   /*width: 320px ;
   height: 240px;*/
-  margin-left: 10%;
-  margin-right: 2%;
-  margin-bottom: 2%;
-  margin-top: 2%;
+  
+  
   color: #969696;
-  font-size: 24px;
+  
   border-radius: 12px;
-  border: 8px solid #4CAF50;
+  border: 4px solid #4CAF50;
 }
 
 

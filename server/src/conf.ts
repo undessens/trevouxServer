@@ -31,6 +31,7 @@ export const  conf  = {
   light:{
     outPort:11000,
     outIp:"127.0.0.1",
+    fadeTime:5
   }
   
 } as any

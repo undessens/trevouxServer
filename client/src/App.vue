@@ -36,7 +36,7 @@ import Manual from "@/views/Manual.vue"
   components:{Auto,Manual}
 })
 export default class MainView extends Vue {
-  autoMode=false
+  autoMode=true
   get viewedComponent(){
     return this.autoMode?Auto:Manual
   }

@@ -76,8 +76,11 @@ export class OSCSenderClass{
   sendF(address:string,f:number){
     this.send1(address,"f",f);
   }
-  sendS(address:string,s:number){
+  sendS(address:string,s:string){
     this.send1(address,"s",s);
+  }
+  sendSF(address:string,s:string,f:number){
+    this.send2(address,"s",s,"f",f);
   }
   
   

@@ -71,20 +71,30 @@ wss.on("connection", function (socket:any) {
 
 
 function processWSMessage(msg:any){
+    const firstArg = msg.args? (msg.args[0] ?msg.args[0].value : undefined):undefined
     if(msg.address.startsWith('/auto')){
-        if(msg.args && msg.args[0]){
+        
+        if(msg.args && !!firstArg){
+            
             videoPlayerOSC.send0("/player/play")
+            lightSender.sendSF("/sequencePlayer/goToStateNamed","autoOn",conf.light.fadeTime)
         }
         else{
+            console.log('stoping')
             videoPlayerOSC.send0("/player/stop")   
+            lightSender.sendSF("/sequencePlayer/goToStateNamed","autoOff",conf.light.fadeTime)
         }
         // videoPlayerOSC.sendMsg(msg)
     }
 }
 
 function processMsgFromVid(msg:any){
+    const firstArg = msg.args? (msg.args[0] ?msg.args[0].value : undefined):undefined
+    console.log('messageFromVid',firstArg)
     if(msg.address.startsWith('/light/memory')){
-        msg.args[0]
+
+        const memName = firstArg;
+        lightSender.sendSF("/sequencePlayer/goToStateNamed",memName,conf.light.fadeTime)
     }
 }
 
