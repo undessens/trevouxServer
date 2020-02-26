@@ -34,7 +34,7 @@ body {
 }
 #app{
   min-height:100%;
-  background-color:#DBDAE0;;
+  background-color:rgb(250, 250, 250);;
 }
 
 .switchText{
