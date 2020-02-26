@@ -16,6 +16,7 @@
   "author": "UnDesSens",
   "license": "ISC",
   "dependencies": {
+    "csv-parser": "^2.3.2",
     "express": "^4.17.1",
     "ip": "^1.1.5",
     "osc": "^2.4.0",

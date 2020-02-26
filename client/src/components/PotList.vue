@@ -3,7 +3,7 @@
     <p class="switchText" > Scene actuelle : {{ activeBtn }} </p>
     <div class="potlist">
 
-      <transition-group name="list-complete" tag="span">
+      <!-- <transition-group name="list-complete" tag="button"> -->
 
         <button v-for="i of numPotList" :key="i" 
         type="button" 
@@ -16,7 +16,7 @@
       </button>
 
 
-    </transition-group>
+    <!-- </transition-group> -->
   </div>
 </div>
 </template>

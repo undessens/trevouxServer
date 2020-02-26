@@ -14,7 +14,7 @@ console.log(`serving ${conf.path.public}`)
 
 const expressOpts  = {} as any
 if(process.env.NODE_ENV!=="production"){expressOpts.maxAge = '10'}
-app.use(express.static(conf.path.public, expressOpts));
+    app.use(express.static(conf.path.public, expressOpts));
 
 const port = conf.ws.serverPort
 server.listen(port,function () {
@@ -34,13 +34,16 @@ const videoPlayerOSC = new OSCSenderClass(
     {
         msg:processMsgFromVid,
         connected:sendConfToVidPlayer,
-    }
-    )
+    })
+
+
 function sendConfToVidPlayer(){
+
+
     for(const [k,v] of Object.entries(conf.vid)){
         if(!(k.startsWith('outPort') || k.startsWith('outIp'))){
-        videoPlayerOSC.send1Auto('/'+k,v)
-    }
+            videoPlayerOSC.send1Auto('/'+k,v)
+        }
     }
 }
 
@@ -68,18 +71,20 @@ wss.on("connection", function (socket:any) {
 
 
 function processWSMessage(msg:any){
-if(msg.address.startsWith('/auto')){
-    if(msg.args && msg.args[0]){
+    if(msg.address.startsWith('/auto')){
+        if(msg.args && msg.args[0]){
             videoPlayerOSC.send0("/player/play")
         }
         else{
             videoPlayerOSC.send0("/player/stop")   
         }
         // videoPlayerOSC.sendMsg(msg)
-        }
+    }
 }
 
 function processMsgFromVid(msg:any){
-
+    if(msg.address.startsWith('/light/memory')){
+        msg.args[0]
+    }
 }
 

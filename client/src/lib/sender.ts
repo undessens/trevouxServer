@@ -57,6 +57,9 @@ export function sendOneTyped(address: string,type: "f"|"i"|"s",value: any){
   sendRaw(address,[{type,value}])
 }
 
+export function send0(address:string){
+  sendRaw(address,[]);
+}
 export function sendI(address: string,v: number){
   sendOneTyped(address,'i',v)
 }
@@ -80,3 +83,6 @@ export function sendAuto(m: boolean){sendI("/auto",m?1:0)}
 export function sendStep(step: number){sendI("/step",step)}
 
 export function sendPlay(m: boolean){sendI("/play",m?1:0)}
+
+export function sendPlayPauseVid(m: boolean){send0("/vid/"+(m?"play":"pause"))}
+export function sendPlayStopVid(m: boolean){send0("/vid/"+(m?"play":"stop"))}
