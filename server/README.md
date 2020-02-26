@@ -1,5 +1,5 @@
 
-# Trevoux
+# Trevoux Server
 This repo contains client(vue) and server(ts-node) part of ipad webpage controlling universalmediaplayer
 
 ## installing
