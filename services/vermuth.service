@@ -1,0 +1,9 @@
+ [Unit]
+ Description=trevouxServer
+ After=multi-user.target
+
+ [Service]
+ ExecStart=/bin/bash /home/pi/Documents/vermuth/run.sh
+
+ [Install]
+ WantedBy=multi-user.target
