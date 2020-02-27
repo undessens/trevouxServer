@@ -1,6 +1,7 @@
  [Unit]
  Description=universalPlayer
- After=multi-user.target
+ After=network.target
+ # multi-user.target
 
  [Service]
  ExecStart=/home/pi/Documents/openFrameworks/apps/universalMediaPlayer/of_universalMediaPlayer/bin/of_universalMediaPlayer
