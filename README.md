@@ -46,6 +46,10 @@ if using csvFile from universalMediaplayer, timestamp names (second column?) wil
 transition time can be setted with fadeTimeAuto/fadeTimeManual in `config.json` or `conf.ts`
 
 
+## webpage
+
+web icons are located in `~/trevouxServer/client/dist/image`
+if name are to be changed, go to `~/trevouxServer/client/src/components/potList.vue`and change the string array laying there
 
 ## universalMediaplayer
 
