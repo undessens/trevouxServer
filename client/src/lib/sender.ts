@@ -88,3 +88,5 @@ export function sendPlayPauseVid(m: boolean){send0("/vid/player/"+(m?"play":"pau
 export function sendPlayStopVid(m: boolean){send0("/vid/player/"+(m?"play":"stop"))}
 export function sendToggleShowError(){send0("/vid/error/show")}
 export function sendShutdown(reboot:boolean){send0("/system/"+(reboot?"reboot":"shutdown"));}
+export function showPlaylist(){send0("/vid/player/printPlaylist");}
+export function showFrames(i:number){sendI("/vid/player/printActualFrame",i);}

@@ -2,6 +2,13 @@
 # Trevoux 
 This repo contains client(vue) and server(ts-node) part of ipad webpage controlling universalmediaplayer and vermuth
 
+# Using
+
+assuming hostname of sd card is radiologic :
+ * webpage : `radiologic.local:8088`
+ * config webpage : `radiologic.local:8088`
+ * vermuth : `radiologic.local:3000`
+
 # Installing
 
 `git clone ... && cd ...`
