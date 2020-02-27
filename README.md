@@ -6,7 +6,7 @@ This repo contains client(vue) and server(ts-node) part of ipad webpage controll
 
 assuming hostname of sd card is radiologic :
  * webpage : `radiologic.local:8088`
- * config webpage : `radiologic.local:8088`
+ * config webpage : `radiologic.local:8088/config`
  * vermuth : `radiologic.local:3000`
 
 # Installing
