@@ -14,7 +14,7 @@
 
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue,Watch } from 'vue-property-decorator';
 import {sendPlayStopVid} from '@/lib/sender'
 
 
@@ -27,6 +27,10 @@ export default class VidController extends Vue {
   @Prop({default:false})
   value!:boolean
 
+@Watch("value")
+vCh(){
+  this.checked = this.value
+}
   @Prop({default:""})
   text!:string
   mounted(){
