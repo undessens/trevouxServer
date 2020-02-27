@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=undessens
+Description=Un Des Sens Desktop Splash
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/undessens
+ScriptFile=/usr/share/plymouth/themes/undessens/undessens.script
